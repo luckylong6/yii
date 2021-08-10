@@ -34,4 +34,9 @@ class TestController extends Controller
         $this->class_name->test();
     }
 
+    /* 测试上传 */
+    public function test() {
+        var_dump("aaa");
+    }
+
 }
