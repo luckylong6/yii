@@ -23,6 +23,5 @@ class AgentsController extends Controller
     {
         $test = new TestController('Active');
         $test->actionMain();
-        
     }
 }
