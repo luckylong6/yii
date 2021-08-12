@@ -16,7 +16,7 @@ use app\models\ContactForm;
 class TestController extends Controller
 {
     protected $class_name;
-    public function __construct($temp_name)
+    public function __construct($temp_name = 'Active')
     {
         if($temp_name == 'Active') {
             $this->class_name = Active::getInstance();
@@ -34,9 +34,9 @@ class TestController extends Controller
         $this->class_name->test();
     }
 
-    /* 测试上传 */
-    public function test() {
-        var_dump("aaa");
+    /* 测试 */
+    public function actionTest() {
+        var_dump("aaa");die;
     }
 
 }

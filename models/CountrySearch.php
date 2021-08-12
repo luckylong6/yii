@@ -44,9 +44,10 @@ class CountrySearch extends Country
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+        //     'query' => $query,
+        // ]);
+        $dataProvider = new ActiveDataProvider();
 
         $this->load($params);
 
