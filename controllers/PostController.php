@@ -12,20 +12,29 @@ class PostController extends Controller
 {
     public function actionView($id)
     {
-        $model = Country::findOne($id);
+        var_dump("view".$id);die;
+        $postModel = new Country();
+        $model = $postModel->findAll([]);
         if ($model === null) {
             throw new NotFoundHttpException;
         }
-        var_dump($model);die;
-        return $this->render('index', ['model' => $model]); 
+    
+        // return $this->render('view', ['model' => $model,]);
+        return $this->renderPartial('index', ['model' => $model, 'name' => 'zhaoyalong', 'country' => 'china']);
     }
-    public function actionCreate()
+    public function actionCreate($id)
     {
-        $model = new Country();
+        var_dump("create".$id);die;
+        $model = new Post;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', ['model' => $model,]);
         }
+    }
+
+    public function actionRead($id)
+    {
+        var_dump("read".$id);
     }
 }

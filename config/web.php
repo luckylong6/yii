@@ -43,14 +43,20 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        
+        // 设置路由
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'enablePrettyUrl' => true,  //将路由模式转换为path，http://www.yii.com/index.php?r=site/about 转为 http://www.yii.com/index.php/site/about
+            'showScriptName' => false, // 将访问路由中的index.php隐藏掉  
             'rules' => [
+                'hello' => 'site/say',
+                'site/<id:\d+>' => 'site/test',
+                'site/<year:\d{4}>/<title>' => 'site/read',
+                '<controller:(post|comment)>/<action:(create|update|delete)>/<id:\d+>' => '<controller>/<action>',
+                '<controller:(post|comment)>/<id:\d+>' => '<controller>/read',
             ],
         ],
-        */
+       
     ],
     'params' => $params,
 ];

@@ -10,4 +10,12 @@ use yii\widgets\LinkPager;
             <?= Html::encode("{$country->name} ({$country->code})") ?>: <?= $country->population ?>
         </li>
     <?php endforeach; ?>
+    <ul>
+        <li>
+            <?= Html::encode("{$name}") ?>
+        </li>
+        <li>
+            <?= $country ?>
+        </li>
+    </ul>
 </ul>

@@ -10,8 +10,9 @@ use yii\base\Model;
  */
 class ContactForm extends Model
 {
-    public $name;
+    public $username;
     public $email;
+    public $password;
     public $subject;
     public $body;
     public $verifyCode;
@@ -22,13 +23,17 @@ class ContactForm extends Model
      */
     public function rules()
     {
-        return [
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
-            ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+        return [ // 在"register" 场景下 username, email 和 password 必须有值 
+            [
+                ['username', 'email', 'password'],
+                'required',
+                'on' => 'register'
+            ], // 在 "login" 场景下 username 和 password 必须有值 
+            [
+                ['username', 'password'],
+                'required',
+                'on' => 'login'
+            ],
         ];
     }
 
@@ -38,7 +43,10 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => \Yii::t('app', 'Your name'),
+            'email' => \Yii::t('app', 'Your email address'),
+            'subject' => \Yii::t('app', 'Subject'),
+            'body' => \Yii::t('app', 'Content'),
         ];
     }
 
@@ -61,5 +69,13 @@ class ContactForm extends Model
             return true;
         }
         return false;
+    }
+
+    public function scenarios()
+    {
+        return [
+            'login' => ['username', 'password'],
+            'register' => ['username', 'email', 'password'],
+        ];
     }
 }

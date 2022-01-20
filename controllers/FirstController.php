@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Country;
 use Yii;
 use app\models\Post;
 use yii\web\Controller;
@@ -11,11 +12,13 @@ class FirstController extends Controller
 {
     public function actionView($id)
     {
-        $model = Post::findOne($id);
+        $postModel = new Country();
+        $model = $postModel->findOne($id);
         if ($model === null) {
             throw new NotFoundHttpException;
         }
-        // return $this->render('view', ['model' => $model,]);
+    
+        return $this->render('view', ['model' => $model,]);
     }
     public function actionCreate()
     {

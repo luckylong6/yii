@@ -148,10 +148,14 @@ class SiteController extends Controller
         }
     }
 
-    public function actionTest()
+    public function actionTest($id = 0)
     {
-
-        var_dump("aaa");
+        var_dump($id);
         die();
+    }
+
+    public function actionRead($year, $title) {
+        echo "$year";
+        echo "$title";
     }
 }

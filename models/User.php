@@ -101,4 +101,12 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     {
         return $this->password === $password;
     }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['login'] = ['username', 'password'];
+        $scenarios['register'] = ['username', 'email', 'password'];
+        return $scenarios;
+    }
 }
